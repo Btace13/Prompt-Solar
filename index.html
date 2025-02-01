@@ -57,7 +57,7 @@
   <script>
     function updateTime(timezone) {
       setInterval(() => {
-          const options = { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+          const options = { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
           const localTime = new Intl.DateTimeFormat([], options).format(new Date());
           document.getElementById("time").textContent = localTime;
       }, 1000);
@@ -73,10 +73,10 @@
                 const timezone = data.timezone;
                 updateTime(timezone);
             }, (error) => {
-                document.getElementById("time").textContent = "Unable to retrieve location.";
+                document.getElementById("time").textContent = "";
             });
         } else {
-            document.getElementById("time").textContent = "Geolocation not supported.";
+            document.getElementById("time").textContent = "";
         }
     }
 
